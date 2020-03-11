@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Pizza } from '../../models/pizza.model';
 import { transition, style, animate, trigger } from "@angular/animations";
 
@@ -23,7 +23,8 @@ export const DROP_ANIMATION = trigger("drop", [
   selector: "pizza-display",
   templateUrl: "./pizza-display.component.html",
   styleUrls: ["./pizza-display.component.scss"],
-  animations: [DROP_ANIMATION]
+  animations: [DROP_ANIMATION],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PizzaDisplayComponent implements OnInit {
   @Input() pizza: Pizza;
