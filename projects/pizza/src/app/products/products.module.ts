@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
 
 // components
 import * as fromComponents from '../products/components';
@@ -19,12 +20,13 @@ import * as fromServices from '../products/services';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    StoreModule.forFeature("products", reducers)
   ],
 
   //providers: [PizzasService]
   providers: [...fromServices.services],
   declarations: [...fromContainers.containers, ...fromComponents.components],
-  exports: [...fromContainers.containers, ...fromComponents.components],
+  exports: [...fromContainers.containers, ...fromComponents.components]
 })
 export class ProductsModule {}
