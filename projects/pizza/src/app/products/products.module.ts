@@ -4,7 +4,8 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers,effects } from './store';
 
 // components
 import * as fromComponents from '../products/components';
@@ -21,7 +22,8 @@ import * as fromServices from '../products/services';
     HttpClientModule,
     ReactiveFormsModule,
     ProductsRoutingModule,
-    StoreModule.forFeature("products", reducers)
+    StoreModule.forFeature("products", reducers),
+    EffectsModule.forFeature(effects)
   ],
 
   //providers: [PizzasService]
